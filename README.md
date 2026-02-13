@@ -24,6 +24,16 @@ Say you have a bunch of similar CSV files (i.e. CSV files having the same exact 
   - You're done!  Feel free to rename 'combined.csv' to something else if you like.
   - If you need to try again, be sure to delete 'combined.csv' first or else it too will be included in the combined output.
 
+Here is the entire sequence of commands, all together:
+```
+c:\
+cd "C:\Users\someuser\myfolder"
+dir
+findstr filterWord myfile1.csv > combined.txt
+findstr /V filterWord *.csv >> combined.txt
+move combined.txt combined.csv
+```
+
 Caveats: This will not work right in the following cases.
   - If the files are .xls or .xlsx files.  They must be text files (CSV, tab-delimited, or similar)
   - If the header string that you choose is also present in the data rows.  In that case those rows will be omitted from the output.
